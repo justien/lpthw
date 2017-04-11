@@ -1,0 +1,27 @@
+#  -*- coding: utf8 -*-
+# Exercise nn: Asking Questions
+
+print "=================================================="
+print "Exercise 11: Asking Questions"
+
+print
+print
+
+# Comment comment
+print "How old are you?",
+age = raw_input()
+
+print "How tall are you?",
+height = raw_input()
+
+print "How much do you weigh?"
+weight = raw_input()
+
+print "So, you're %r old %r tall, and weigh %r." % (
+    age, height, weight)
+
+
+print
+print
+
+print "=================================================="

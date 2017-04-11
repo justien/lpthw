@@ -1,0 +1,485 @@
+
+# LEARN PYTHON - REVISION NOTES
+
+# 23456789012345678901234567890123456789012345678901234567890123456789
+
+print "=================================================="
+print "LEARN PYTHON - REVISION NOTES"
+
+print
+print
+
+# Write down all the words and symbols that we've used so far
+# Next to each, write what it does.
+# Then, memorise this list.  So you really know what all the things are.
+# Do this for a few days.
+
+----== Ex 0 - Setup
+mkdir - makes a directory
+cd - changes into a directory
+make - creates a txt file
+clear - clears off the contents of the screen
+cat - echos the contents of a file to the screen
+
+----== ==---------------------------------------------------------------------
+----== ex 1 - A Good First Program
+print ""
+prints the items enclosed in double quotes to the screen.
+Items enclosed in single quotes are also printed, including the 
+single quotes.  Items enclosed this way are strings.
+
+# -*- coding: utf-8 -*- 
+placed at the top of the script, this tells python to use unicode
+utf-8, so that we avoid potential AASCII encoding errors.
+
+#
+octothorpe prefaces lines of comments, and python won't include them
+when compiling or running the script.
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 2 - Comment and Pound characters
+# 
+is how comments are indicated.  They can also go on the same
+line as code, like:
+print "hello, world" #here we greet the world
+
+
+
+----== ==---------------------------------------------------------------------
+---== Ex 3 - Numbers and Math
++ - / * % < > <= >=
+Python observes order of operations, for instance 25 + 30 / 6 = 30
+<= and >= return the boolean values True and False
+/ gives the whole part of an integer division, but just divides a decimal
+% gives the remainder part of a division
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 4 - Variables and Names
+=
+a variable name on the left side, and its value on the right.
+Variables can contain letters, numbers, and underscores, but may
+not start with a number or be only a number.
+a1_ = awesome
+1 = awesome <--- invalid!!
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 5 - More Variables and Printing
+format string
+'format', here, is an adjective, by the way.  These are strings that
+have little format sequences inside them, like:
+%s - used for text
+%r - used for raw input
+%d - used for numbers
+... After the closing " of the print statment, a mini-dictionary is supplied 
+that tells python which variables go in, in order.  The format sequences tells
+python what kind of a string it is.
+
+Here are some more formatters:
+%b - outputs number in binary
+%c - converts integers to unicode before printing
+%d - outputs number in decimal
+%o - outputs number in octal
+%x - hex, with lowercase letters
+%X - hex, with uppercase letters
+%n - decimal, but with localised number separators
+
+round() will round a floating point number
+eg round(1.7333) will give 2
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 6 - Strings and Text
+Strings can contain references to other strings (variables).
+%s and %d are for displaying stuff to the user.
+%r is good for debugging as it shows the raw data.
+Double and single quotes are interchangable?
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 7 - More Printing
+Ooh!  You can tell print to repeat: print "ha" * 10
+
+print "ha",
+print "ha" ---> haha
+
+print "ha"
+print "ha" ---> ha
+                ha
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 8 - Printing, printing
+Oh, very cool - using %r as debug:
+formatter = "%r r%"               
+print formatter % (formatter, formatter)
+--->%r %r %r %r
+
+actually I don't quite get this in the same way as other things. it makes sense
+but i have to think about it each time.
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 9 - Printing, Printing, Printing
+\n - a newline (typed as shift + alt + 7 on my Mac)
+""" """ - lets you put the text in the script on more than one line in the
+          same print statment
+          
+
+----== ==---------------------------------------------------------------------
+----== Ex 10 - What Was That?
+\ - escapes control characters inside a string
+""" and "' mean the same thing
+
+\\ - a backslash
+\' - single quote
+\" - double quote
+\a - ASCII bell
+\b - ASCII backspace
+\f - ASCII formfeed
+\N{Name} - character named Name in unicode db
+\r - carriage return
+\t - horizontal tab
+\uxxxx - char with 16-bit hex value (unicode only)
+\Uxxxxxxxx - char with 32-bit hex value (unicode only)
+\v - ASCII vertical tab
+\ooo - char with octal value ooo
+\xhh - char with hex value hh 
+
+"""
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 11 - Asking Questions
+raw_input() - waits for the user to input some value
+int(raw_input()) - gets input and converts it to an integer
+input() - will try to convert input to python code.  Security problem.
+age = raw_input() assigns the input to the variable 'age'
+Use a comma after the print question to put the input point on the same line.
+
+
+----== ==---------------------------------------------------------------------
+----== Ex12 - Prompting People
+raw_input("Are you hello friend? ")
+check_for_friend = raw_input("Are you hello friend? ")
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex13 - Parameters, Unpacking, Variables
+Another way to pass variables or values to a script:
+when calling a script, you can give it arguments.
+These come in as STRINGS, and might need conversion via int().
+
+Do this by importing the sys module.
+
+from sys import argv		<--- importing the argument vector
+
+script, user_input = argv	<--- unpacking the argument vector
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 14  Prompting and Passing
+prompt = '> '
+raw_input(prompt)
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 15 Reading Files
+To use the contents of a file, a few special steps are needed.
+1. First, pass the name and location of the file to python.
+2. Then, get python to load the file to create a file object.
+3. Then, perform a .read() function on the object to access the contents.
+4. Finally, close the file with a .close() operation.
+
+	script, filename = argv
+	fobj = open(filename)
+	print fobj.read()	<-- doesn't need filename b/c fobj has it
+	fobj.close()		<-- fobj says what obj's file is already
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 16 Reading and Writing Files
+.open()		<-- creates a fobj, can take arguments such as: 
+				(w)rite, (r)ead, (a)ppend
+.close()	<-- writes changes and closes file, removes fobj
+.read()		<-- loads contents of fobj to memory
+.readline()	<-- reads one line of a fobj
+.truncate()	<-- drops all content of fobj
+.write('a')	<-- writes 'a' to the file, leaves insert at end of content
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 17 - More Files
+Here we create the fobj and perform open() and read() in one fell swoop:
+fobj = open(in_file).read()
+
+from os.path import exists
+
+len(fobj)
+exists(filename)
+print open(to_file).read()
+
+ALL ON ONE LINE - NO INTERMEDIATE STAGING - RAD COMPRESS!
+open(to_file, 'w').write(open(from_file).read())
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 18 - Variables, Code, Functions
+def print_thing(arg1, arg2)
+    print "arg1: %s, arg2: %s" % (arg1, arg2)
+    
+print_thing(house, 'of pet peeves')
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 19 - Functions and Variables
+cheese_and_crackers(var1, var2 + 33)
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 20 - Functions and Files
+print file.read()
+file.seek()		<-- puts the read point at the beginning of the file
+file.seek(n)	<-- puts read head at position n
+file.readline()	<-- emits the content from the read point to EOL inc EOL
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 21 - Returning Values from a Function
+def add(a, b):
+    return a + b
+    
+sum = add(3, 5)	<-- sum will now have the value of 8
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 25 - Even More Practice
+Dictionary Scripts!!  
+    Library Scripts!!
+        Repository Scripts!!
+To use: 
+        from scriptname import useful_fn
+        from scriptname import *
+                
+def useful_n(input_values):
+    """The three quotes delimit documentation comments"""
+    print int(input_values)
+
+help(scriptname)
+    display all the documentation comments found in scriptname
+    
+help(scriptname.useful_fn)
+    returns useful_fn's docu comments
+
+str.split([sep[, maxsplit]])
+    built-in type
+    look for 'sep' and split at those points.
+    maxsplit is # of splits to perform.
+
+str.pop([i])
+    mutable sequence type
+    given that s[i] = x <-- item i of s is replaced by x,
+    str.pop([i]) <-- x = s[i]; del s[i]; return x
+    
+sorted(iterable)
+    built-in function
+    returns a new sorted list from the items in iterable
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 26 - Congratulations, Take a Test!
+Functions can be called in two ways:
+    1. from ex25 import *
+    2. var = ex25.make_a_list_from(sentence)
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 27 Logic Tables  
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 30 Else and If
+
+	if condition:
+		action
+	elif other condition:
+		action
+	else doesn't fulfill the above conditions
+		action
+    
+It seems that when condition and other condition are the same, python
+will randomly choose between the three actions.  What a mess, that can't be
+how this works.
+
+	if b > a:
+		print "python chooses b > a"
+	elif b > a:
+		print "python chooses elif b > a"
+	else:
+		print "python chooses else"
+
+---> urgghhhhh ... the following results which have their own
+     consistency to do with how many digits a and b have?
+		--------------
+		a	b	result
+		--------------
+		10	9	if
+		11	10	else
+		1	10	if
+		-	-	else
+		10	5	if
+		100	50	if
+		120	100	else
+		120	5	if
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 31 Making Decisions
+
+same as ex30 but with raw_input
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 32 Loops and Lists
+
+Loops need a list, in which to store their results.
+
+    list_objs = ['obj_0', 'obj_1', 'obj_n']
+
+list_objs is now a variable (array) with THREE values (???)
+
+--** LISTS **--
+list = [] 				<-- creates an empty list to be used later
+list = [range(0, 6)]	<-- creates a list, using values from the range sequence
+list = [[1, 2], [3, 4]]	<-- 2D list!!!
+
+list.append(i)			<-- adds value of i to the end of the list
+    .extend(L)			<-- append all of list L to the current list
+    .insert(i, x)		<-- insert x before the i-th element
+    .remove(x)			<-- remove 1st instance of x from the list
+    .pop([i])			<-- remove the i-th element of the list
+    .index(x)			<-- return the index of the 1st instance of x
+    .count(x)			<-- how often does x occur?
+    .sort(..)			<-- sort the items of the list (see sorted() for more)
+    .reverse()			<-- reverse all the elements of the current list
+    
+append() + pop()		<-- a STACK, last-in/first-out, nice and fast
+
+--** RANGES **--
+range(2, 10, 3)			<-- start at 2, step by 3, while less than 10
+							creates an arithmetic progression
+
+--** LOOPS **--
+for i in range (0, n):	<-- starts i at 0, and increments i by 1, until n.
+    elements.append(i)	<-- adds current value of i to list of elements
+    
+for i in elements:
+    print "element: %d" % i		<-- steps through each element in the list and
+    								prints the value of that element
+    								
+    								
+----== ==---------------------------------------------------------------------
+----== Ex 33 While Loops
+
+	while i < n:
+		do thing
+
+While-loops generally test for a condition, such as "b is not True". 
+So they are not limited to stepping through a list of values, like a for-loop.
+
+    while True:
+        do thing		<-- a kind of generic keep-alive; 
+        					the while-loop will just keep cycling through
+
+In the special case that the condition is a less-than comparison, the 
+while-loop is the same as a for-loop:
+
+    for i in range(start, stop, step):
+        do thing
+
+Example:
+    "while i < 7" is the same as "for i in range (0, 7, 1)"
+
+    
+    
+----== ==---------------------------------------------------------------------
+----== Ex 34 Lists
+
+The one thing to recall is the first member of the list is cardinal 0
+And cardinal N of a list is the n+1th member of the list.
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 35 Branches and Functions
+Here is where we made the Cthulu Bear Gold game.
+
+if "0" in choice or "1" in choice	<-- shitty way to look for a binary number
+exit(0)								<-- quits the script
+while True:							<-- keeps the loop looping
+
+int()			<-- converts the input to an integer.
+
+
+
+----== ==---------------------------------------------------------------------
+----== Ex 36 Designing and Debugging
+
+Guidelines for If-Statements
+
+	1. Every if must have an else
+	2. If you think that the if-statement covers all eventualities, you 
+	   might be wrong.  Use the final else to include a special die() function
+	   which flags that the logic doesn't cover all cases.
+	3. Don't nest if-statements.
+	4. Keep the boolean tests simple. You can break up their parts and assign 
+	   them to earlier variables - this is easier to read.
+    
+Guidelines for LOOPS
+
+	1. While-loops should be saved for special occasions only. Try to avoid.
+	2. Use for loops in all lother cases. Especially good for a fixed or
+	   limited list of things over which to loop.
+	
+Tips for Debugging
+
+	1. Don't use a debugger, they can be really unhelpful.
+	2. Put traces in variables to see what they're doing.
+	3. Code a little, run a little, fix a little. Repeat.
+	
+
+
+--------------
+  
+
+
+
+
+
+
+
+
+print "=================================================="

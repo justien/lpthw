@@ -1,0 +1,16 @@
+It's possible to open and read a file, either by specifying it at the
+command line when calling the script or by user input when running the 
+script.
+
+Using argv to collect the argument when the script is called has the 
+advantage that the entire script can run without user input from that point
+onwards.
+And this is pretty good when the script is being used for automation, since
+chance of error at user input is decreased.
+For instance, the script can call for its inputs a config file, and 
+I'm pretty sure raw_input won't allow for that.
+
+But if your script has a lot of branches or decisions to be made that are
+not 100% clear from the contents or properties of the files themselves, 
+then argv is not dish of the day. Then one needs input from
+the user (or another system) to attain the end of the situation.

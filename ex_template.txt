@@ -1,0 +1,16 @@
+#  -*- coding: utf8 -*-
+# Exercise nn: Asking Questions
+
+print "=================================================="
+print "Exercise nn: Asking Questions"
+
+print
+print
+
+# Comment comment
+
+
+print
+print
+
+print "=================================================="

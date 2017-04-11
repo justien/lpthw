@@ -1,0 +1,78 @@
+It's possible to open and read a file, either by specifying it at the
+command line when calling the script or by user input when running the 
+script.
+
+Using argv to collect the argument when the script is called has the 
+advantage that the entire script can run without user input from that point
+onwards.
+And this is pretty good when the script is being used for automation, since
+chance of error at user input is decreased.
+For instance, the script can call for its inputs a config file, and 
+I'm pretty sure raw_input won't allow for that.
+
+But if your script has a lot of branches or decisions to be made that are
+not 100% clear from the contents or properties of the files themselves, 
+then argv is not dish of the day. Then one needs input from
+the user (or another system) to attain the end of the situation.
+
+# --argv - what does it mean?
+#   Below, the module called 'argument vector' is imported from sys.
+#   This vector holds the values of the arguments that are passed
+#   to the script whilst running it.
+ARGV - it means that the stuff after the script name is to be 
+treated as a series of space-separated arguments.
+Because when you type 'python script.py arg1 arg2' you're running the grandest
+function imaginable - Python! The Grand Python Function!
+And this gets back to my earlier questions - where does python keep all these
+arguments and strings?  In its allocated memory. I guess python itself isn't
+written in python, I guess it's in C++ or similar.
+
+# --my questions
+#   1. This is not the same as raw_input() ... somehow ... or %s
+#      where you have to put the little dictionary of string names
+#      at the end of the print command
+#      eg print "Hello %s and %s!" % (player1, player2) 
+#   2. It tells python to give me the command line arguments that
+#      the person typed in ... interesting - so the command line arguments
+#      are stored by python somewhere and then used.  
+#      Where are they stored, and when are they replaced?
+#      How is cleanup of these variables handled?
+#      What if I call a python script with arguments that doesn't import
+#      argv from sys? - they're ignored, but are the values cleaned up
+#      once the compiler sees the script hasn't called argv?
+
+--= Ex16 - Reading and Writing Files
+26.8.2016
+... I'm looking for a way to track the state of the 
+file ex16_sample.txt as it changes during the running of the 
+script.
+Hmm ... but it occurs to me that actually this is indirect.
+Because the script's working on a /fileobject/, not really
+directly on the file itself.
+
+
+"""
+I've added this close as a kind of hack debugger on the 
+the state of the file, maybe I can see this change in 
+the text editor whilst the script waits for user input
+a bit further down.
+Nope that didn't work with TextWrangler, at any rate.
+So there is this thing called getattribute in the pydoc,
+gonna try that ... err no I am not. But I'll move this idea
+to my thoughts file, no worries.
+"""
+
+print "Truncating and closing %s ... Goodbye!" % filename
+target.truncate()
+target.close()
+
+--= Ex17 - More Files
+26.8.2016
+Here I really got into the fine distinctions between a 
+  - a file
+  - the file object vis a vis the script
+  - the contents of the file as a different kind of object
+  
+--= Ex19 - Functions
+29.08.2016
+
